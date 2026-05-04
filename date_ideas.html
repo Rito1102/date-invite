@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Date Invite 💌</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe6e6, #fff0f5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 350px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #ff4d6d;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #e60039;
+      transform: scale(1.05);
+    }
+
+    .no {
+      background-color: #ddd;
+      color: #333;
+      position: absolute;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>PAITANDIIII Do you wanna go on a date with me? 💖</h1>
+    <button class="btn yes" onclick="showLocation()">Yes 😌</button>
+    <button class="btn no" id="noBtn">No 🙈</button>
+
+    <div class="result" id="result">
+      <p>Yayyy!! I knew it 😏</p>
+      <p>Meet me here:</p>
+      <a href="https://maps.app.goo.gl/gmRZ4MvapEZQWDQF8" target="_blank">
+        Open Location 📍
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showLocation() {
+      document.getElementById('result').style.display = 'block';
+    }
+
+    const noBtn = document.getElementById('noBtn');
+    const card = document.getElementById('card');
+
+    function moveButton() {
+      const cardRect = card.getBoundingClientRect();
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const maxX = cardRect.width - btnWidth - 20;
+      const maxY = cardRect.height - btnHeight - 20;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
+    }
+
+    noBtn.addEventListener('mouseenter', moveButton);
+    noBtn.addEventListener('click', moveButton);
+  </script>
+</body>
+</html>
